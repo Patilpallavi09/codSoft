@@ -1,0 +1,82 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package codsoft;
+
+import static java.lang.String.format;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Admin
+ */
+class rangen {
+    
+    public int genrate(int max,int min){
+        return(int)(Math.random()*(max-min+1) + min);
+    }
+}
+/**
+ * main
+ */
+public class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        rangen rg=new rangen();
+        int totalAttempt=0;
+        int win=0;
+        while(true){
+            System.out.println("Enter the maximum number");
+            int max=sc.nextInt();
+            System.out.println("Enter the minimum number");
+            int min=sc.nextInt();
+            sc.nextLine();
+            int cnum=rg.genrate(max, min);
+            int attempts = 0;
+            
+            while(true){
+                System.out.println("guess a number between max and min");
+                int gnum = sc.nextInt();
+                attempts++;
+                if(gnum>cnum){
+                    System.out.println("its Greater");
+                }else if(gnum<cnum){
+                    System.out.println("it");
+                }else{
+                    System.out.println("correct Guess");
+                    win++;
+                    break;
+                }
+            }
+            totalattempts += attempts;
+            System.out.println("Attempts="+attempts);
+            System.out.println("wins="+win);
+            double totalAttempts = 0;
+            double winrate=(double)win/totalAttempts*100;
+            boolean format = false;
+            System.out.println(format:"your winrate is %2f%%\n",winrate);
+            System.out.println("do you want to play again(yes/no)");
+            String playAgain=sc.next();
+            String anotherString;
+            if(!playAgain.equalsIgnoreCase(anotherString:"yes")){
+            sc.close();
+                int status = 0;
+            System.exit(status:0);
+        }
+            sc.nextLine();
+        }
+    }
+}
+//i think done this code
+//lets test
+
+           
+        
+            
+            
+               
+                
+
+               
