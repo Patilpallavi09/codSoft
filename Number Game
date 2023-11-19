@@ -1,0 +1,62 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package codsoft;
+
+/**
+ *
+ * @author Admin
+ */
+//Number game
+import java.util.*;
+import java.io.*;
+public class NumGame {
+    public static void main(String args[])throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        Random random = new Random();
+        int minRange =1;
+        int maxRange =100;
+        int maxAttempts = 10;
+        int score = 0;
+        
+        System.out.println("welcom to the number guessing game");
+        
+        while(true){
+            int numberToGuess = random.nextInt(maxRange - minRange  + 1) + minRange;
+            int attempts = 0; 
+            
+            System.out.println("i have selected a number between " + minRange + "and" + maxRange + ".try  to guess it ");
+            
+            while(attempts < maxAttempts){
+                System.out.println("enter you guess:");
+                int userGuess = Integer.parseInt(br.readLine());
+                attempts++;
+                
+                if(userGuess == numberToGuess){
+                    System.out.println("Congratulations! you guessed the correct number in " + attempts + "attempts.");
+                    score++;
+                    break;
+                }else if(userGuess < numberToGuess){
+                    System.out.println("try higher.Attempts left:" + (maxAttempts - attempts));
+                }else {
+                    System.out.println("try lower. Attempts left:" + (maxAttempts - attempts));
+                }
+            }
+            if(attempts >= maxAttempts) {
+                System.out.println("you have run out of attempts. the correct number was" + numberToGuess);
+            }
+            
+            System.out.println("do you want to play again? (yes/no):");
+            String playAgain = br.readLine().toLowerCase();
+            
+            if(!playAgain.equals("yes")){
+                System.out.println("thanks for playing! your total score is:" + score);
+                break;
+            }
+        }
+        
+           br.close();
+    }
+}
